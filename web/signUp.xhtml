@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>注册</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <table>
+            <h:form>
+                <tr>
+                    <td><h:outputText value="用户名："/></td>
+                    <!--使用验证器验证密码用户名非空且长度在3-20位之间-->
+                    <td><h:inputText id="inputName" value="#{signUpBean.name}"
+                                     required="true" requiredMessage="用户名不能为空"
+                                     validatorMessage="用户名长度为3-20位">
+                            <f:validateLength minimum="3" maximum="20"/>
+                        </h:inputText>
+                    </td>
+                    <td><h:message for="inputName"></h:message></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="密码："/></td>
+                    <td><h:inputSecret id="inputSecret" value="#{signUpBean.password}"
+                                       required="true" requiredMessage="密码不能为空"
+                                       validatorMessage="密码长度为3-20位">
+                            <f:validateLength minimum="3" maximum="20"/>
+                        </h:inputSecret>
+                    </td>
+                    <td><h:message for="inputSecret"></h:message></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="确认密码："/></td>
+                    <td><h:inputSecret value="#{signUpBean.rePassword}"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="手机："/></td>
+                    <td><h:inputText value="#{signUpBean.phone}"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="邮箱："/></td>
+                    <td><h:inputText value="#{signUpBean.email}"/></td>
+                </tr>
+                <tr>
+                    <td><input type="reset" value="请 空"/></td>
+                    <td><h:commandButton value="注 册" action="#{signUpBean.commit()}"/></td>
+                </tr>
+            </h:form>
+        </table>
+    </body>
+</html>

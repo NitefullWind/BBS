@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>请先登录</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton value="发表文章" action="#{topicListBean.publish()}"/>
+            <ui:repeat value="#{topicListBean.data}" var="t" varStatus="i">
+                <table border="1">
+                    <tr>
+                        <td><h:outputText value="#{i.index}"/></td>
+                        <td><h:outputText value="#{t.title}"/></td>
+                        <td><h:outputText value="#{t.content}"/></td>
+                    </tr>
+                </table>
+            </ui:repeat>
+        </h:form>
+    </h:body>
+</html>
+

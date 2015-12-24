@@ -17,6 +17,7 @@ public class SignInBean {
     private String password;
     private String errMessage;
     private UserBean user;
+    public OpDB db;
 
     /**
      * @return the name
@@ -62,11 +63,10 @@ public class SignInBean {
     
     public String verify(){
         //传入用户名密码，查询数据库
-        OpDB db = new OpDB();
         List parameterList = new ArrayList();
         parameterList.add(name);
         parameterList.add(password);
-        List list = db.execSelect("select id from tbl_users where (name=? and password=?)", parameterList);
+        List list = getDb().execSelect("select id from tbl_users where (name=? and password=?)", parameterList);
         
         if(list.size() > 0) {
             //得到第一行的list
@@ -96,5 +96,13 @@ public class SignInBean {
      */
     public void setUser(UserBean user) {
         this.user = user;
+    }
+
+    public OpDB getDb() {
+        return db;
+    }
+
+    public void setDb(OpDB db) {
+        this.db = db;
     }
 }

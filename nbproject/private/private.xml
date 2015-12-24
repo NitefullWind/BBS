@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/J2EE/BBS/src/java/beans/SignUpBean.java</file>
+            <file>file:/E:/J2EE/BBS/web/topicList.jsp</file>
+            <file>file:/E:/J2EE/BBS/src/java/beans/SignInBean.java</file>
+            <file>file:/E:/J2EE/BBS/src/java/beans/TopicListBean.java</file>
+            <file>file:/E:/J2EE/BBS/web/publishTopic.xhtml</file>
+            <file>file:/E:/J2EE/BBS/web/signUp.xhtml</file>
+            <file>file:/E:/J2EE/BBS/web/WEB-INF/faces-config.xml</file>
+            <file>file:/E:/J2EE/BBS/src/java/beans/BaseBean.java</file>
+            <file>file:/E:/J2EE/BBS/web/welcome.xhtml</file>
+            <file>file:/E:/J2EE/BBS/web/index.xhtml</file>
+            <file>file:/E:/J2EE/BBS/web/signIn.xhtml</file>
+            <file>file:/E:/J2EE/BBS/src/java/beans/OpDB.java</file>
+            <file>file:/E:/J2EE/BBS/src/java/beans/UserBean.java</file>
+            <file>file:/E:/J2EE/BBS/src/java/beans/TopicBean.java</file>
+        </group>
+    </open-files>
+</project-private>
