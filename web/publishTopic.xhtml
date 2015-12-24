@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>发表文章</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <table>
+            <h:form>
+                <tr>
+                    <td><h:outputText value="标题："/></td>
+                    <!--使用验证器验证密码用户名非空且长度在3-20位之间-->
+                    <td><h:inputText id="inputTitle" value="#{topicBean.title}">
+                        </h:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="内容："/></td>
+                    <td><h:inputTextarea value="#{topicBean.content}"/></td>
+                </tr>
+                <tr>
+                    <td><input type="reset" value="请 空"/></td>
+                    <td><h:commandButton value="发 表"/></td>
+                </tr>
+            </h:form>
+        </table>
+    </body>
+</html>
