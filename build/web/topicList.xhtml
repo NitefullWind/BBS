@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>论坛首页</title>
+    </h:head>
+    <h:body>
+        <table width="785" height="59" border="1"  align="center" >
+            <tr bordercolor="#66FF33" bgcolor="#BCE7FA">
+                <td align="center">用户：<a href="/BBS/faces/signIn.xhtml">#{userBean.name}</a></td>
+                <td colspan="2" align="right"> <a href="/BBS/faces/topicPublish.xhtml">发新帖</a></td>
+            </tr>
+            <tr bordercolor="#66FF33"  bgcolor="#BCE7FA">
+                <td width="252"><div align="center">帖子主题</div></td>
+                <td width="398"><div align="center">帖子内容</div></td>
+                <td width="113" align="right" valign="top"><div align="center">发帖时间</div></td>
+            </tr>
+            <ui:repeat value="#{topicListBean.data}" var="t" varStatus="i">
+                <tr bordercolor="#66FF33" bgcolor="#BCE7FA">
+                    <td width="252" height="17">
+                        <a href="/BBS/faces/topicShow.xhtml?id=#{t.id}">#{t.title} </a>
+                    </td>
+                    <td  width="398"  align="center" bordercolor="#66FF33" bgcolor="#BCE7FA" >
+                        <a href="/BBS/faces/topicShow.xhtml?id=#{t.id}">#{t.subContent} </a>
+                    </td>
+                    <td align="center">
+                        <h:outputText value="#{t.submitDate} #{t.submitTime}"/>
+                    </td>
+                </tr>
+            </ui:repeat>
+        </table>
+    </h:body>
+</html>
+

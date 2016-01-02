@@ -18,7 +18,8 @@ public class SignUpBean {
     private String rePassword = null;   //确认密码
     private String email = null;        //邮箱
     private String phone = null;        //电话
-    public OpDB db;
+    private OpDB db;
+    
     public String commit(){
         if(!name.isEmpty() && !password.isEmpty() && (password.equals(rePassword))){
             List parameterList = new ArrayList();

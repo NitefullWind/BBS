@@ -17,18 +17,17 @@ and open the template in the editor.
             <h:form>
                 <tr>
                     <td><h:outputText value="标题："/></td>
-                    <!--使用验证器验证密码用户名非空且长度在3-20位之间-->
-                    <td><h:inputText id="inputTitle" value="#{topicBean.title}">
+                    <td><h:inputText id="inputTitle" value="#{topicListBean.title}">
                         </h:inputText>
                     </td>
                 </tr>
                 <tr>
                     <td><h:outputText value="内容："/></td>
-                    <td><h:inputTextarea value="#{topicBean.content}"/></td>
+                    <td><h:inputTextarea value="#{topicListBean.content}"/></td>
                 </tr>
                 <tr>
                     <td><input type="reset" value="请 空"/></td>
-                    <td><h:commandButton value="发 表"/></td>
+                    <td><h:commandButton value="发 表" action="#{topicListBean.insertData()}"/></td>
                 </tr>
             </h:form>
         </table>

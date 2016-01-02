@@ -18,7 +18,9 @@ public class TopicBean {
     private String id;
     private String title;
     private String content;
+    private String subContent;
     private String author;
+    private String submitDate;
     private String submitTime;
     /**
      * Creates a new instance of Topic
@@ -64,6 +66,28 @@ public class TopicBean {
 
     public void setSubmitTime(String submitTime) {
         this.submitTime = submitTime;
+    }
+
+    public String getSubmitDate() {
+        return submitDate;
+    }
+
+    public void setSubmitDate(String submitDate) {
+        this.submitDate = submitDate;
+    }
+
+    public String getSubContent() {
+        if(!getContent().isEmpty() && getContent().length()>20) {
+            subContent = content.substring(0, 20);   //胜率内容为主要内容的前20个字符
+            subContent += "...";                     //添加省略符号
+        }else{
+            subContent = content;
+        }
+        return subContent;
+    }
+
+    public void setSubContent(String submitContent) {
+        this.subContent = submitContent;
     }
     
 }

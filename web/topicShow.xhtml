@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <head>
+        <title>回复</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <table width="785" height="59" border="1"  align="center" >
+            <tr bordercolor="#66FF33" bgcolor="#BCE7FA">
+                <th colspan="3" align="left"><a href="./topicList.xhtml">[返回]</a>主题：<h:outputText value="#{replyBean.topic.title}"/></th>
+            </tr>
+            <tr><td>
+                    <table width="785" bordercolor="#66FF33" border="1" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td rowspan="4" valign="top" width="100">
+                                <dl class="user_info ">
+                                    <dd>0楼：</dd>
+                                    <dd class="username">
+                                        <a href="" rel="nofollow" target="_blank" title="#{author}">#{replyBean.topic.author}</a>
+                                        <br/>
+                                        <h:outputText value="楼主"/>
+                                    </dd>
+                                </dl>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" class="post_info " data-username="u011225629" data-floor="1">
+                                发表于：
+                                #{replyBean.topic.submitDate} #{replyBean.topic.submitTime}
+                            </td>
+                        </tr>
+                        <!--回复内容-->
+                        <tr>
+                            <td valign="center">
+                                <br/>
+                                #{replyBean.topic.content}
+                                <br/>
+                                <br/>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td valign="bottom" align="right">
+                              <div class="control">
+                                <div id='post-forum-bulletin-1'  class='fl tracking-ad' data-mod='popu_9'></div>
+                                <div class="fr">
+                                    <a href="#quote" class="quote" rel='nofollow'>回复</a>
+                                </div>
+                                </div>
+                          </td>
+                      </tr>
+                    </table>
+                </td>
+            </tr>
+            <ui:repeat value="#{replyBean.replys}" var="reply" varStatus="floor">
+                <tr><td>
+                    <table width="785" bordercolor="#66FF33" border="1" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td rowspan="4" valign="top" width="100">
+                                <dl class="user_info ">
+                                    <dd>#{floor.index+1}楼：</dd>
+                                    <dd class="username">
+                                        <a href="" rel="nofollow" target="_blank" title="#{author}">#{reply.author}</a>
+                                        <br/>
+                                        <h:outputText value="#{reply.extraMess}"/>
+                                    </dd>
+                                </dl>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" class="post_info " data-username="u011225629" data-floor="1">
+                                回复<label style="color:blue;">#{reply.replyUser}</label>于：
+                                #{reply.submitDate} #{reply.submitTime}
+                            </td>
+                        </tr>
+                        <!--回复内容-->
+                        <tr>
+                            <td valign="center">
+                                <br/>
+                                #{reply.content}
+                                <br/>
+                                <br/>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td valign="bottom" align="right">
+                              <div class="control">
+                                <div id='post-forum-bulletin-1'  class='fl tracking-ad' data-mod='popu_9'></div>
+                                <div class="fr">
+                                    <a href="#quote" class="quote" rel='nofollow'>回复</a>
+                                </div>
+                                </div>
+                          </td>
+                      </tr>
+                    </table>
+                </td></tr>
+            </ui:repeat>
+        </table>
+    </body>
+</html>

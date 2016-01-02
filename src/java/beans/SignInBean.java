@@ -17,7 +17,7 @@ public class SignInBean {
     private String password;
     private String errMessage;
     private UserBean user;
-    public OpDB db;
+    private OpDB db;
 
     /**
      * @return the name

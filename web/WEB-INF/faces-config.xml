@@ -54,10 +54,38 @@
         <managed-bean-class>beans.TopicBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>replyBean</managed-bean-name>
+        <managed-bean-class>beans.ReplyBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>db</property-name>
+            <value>#{db}</value>
+        </managed-property>
+    </managed-bean>
         
     <!--主页跳转-->
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show</from-outcome>
+            <to-view-id>/topicList.xhtml</to-view-id>
+        </navigation-case>
+        //登录成功
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/topicList.xhtml</to-view-id>
+        </navigation-case>
+        //登录失败
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/signIn.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--查看主题界面的跳转-->
+    <navigation-rule>
+        <from-view-id>/topicList.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>notSignIn</from-outcome>
             <to-view-id>/signIn.xhtml</to-view-id>
@@ -90,12 +118,25 @@
         //登录成功
         <navigation-case>
             <from-outcome>success</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
+            <to-view-id>/topicList.xhtml</to-view-id>
         </navigation-case>
         //登录失败
         <navigation-case>
             <from-outcome>failure</from-outcome>
             <to-view-id>/signIn.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--发表文章界面跳转-->
+    <navigation-rule>
+        <from-view-id>/topicPublish.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/topicList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/topicPublish.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>

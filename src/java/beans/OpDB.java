@@ -116,7 +116,10 @@ public class OpDB {
     //执行带参数的如insert,delete,update操作,返回操作影响的行数
     public int execUpdate(String sql, List parameterList) {
         int resultCount = -1;
-        if(connectDB()){
+        if(con == null) {
+            connectDB();
+        }
+//        if(connectDB()){
             try { 
                 pstmt = con.prepareStatement(sql);
                 for(int i=1; i<parameterList.size()+1; i++) {
@@ -126,9 +129,9 @@ public class OpDB {
             } catch (SQLException ex) {
                 Logger.getLogger(OpDB.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
-                closeDB();
+//                closeDB();
             }
-        }
+//        }
         return resultCount;
     }
     

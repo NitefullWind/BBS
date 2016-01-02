@@ -9,16 +9,8 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:commandButton value="发表文章" action="#{topicListBean.publish()}"/>
-            <ui:repeat value="#{topicListBean.data}" var="t" varStatus="i">
-                <table border="1">
-                    <tr>
-                        <td><h:outputText value="#{i.index}"/></td>
-                        <td><h:outputText value="#{t.title}"/></td>
-                        <td><h:outputText value="#{t.content}"/></td>
-                    </tr>
-                </table>
-            </ui:repeat>
+            <ui:include src="signIn.xhtml"/>
+            <h:commandLink value="以游客身份查看" action="show"/>
         </h:form>
     </h:body>
 </html>

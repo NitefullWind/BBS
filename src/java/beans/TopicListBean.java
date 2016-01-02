@@ -21,15 +21,17 @@ public class TopicListBean {
     private String title;
     private String content;
     private String author;
+    public String submitDate;
     private String submitTime;
     private List data = null;
-    public OpDB db;
-    public UserBean user;
+    private OpDB db;
+    private UserBean user;
     
     /**
      * Creates a new instance of topicListBean
      */
     public TopicListBean() {
+        System.out.println("...");
     }
 
     public String getId() {
@@ -97,10 +99,12 @@ public class TopicListBean {
             for(int i=0; i<list.size(); i++) {
                 List row = (List)list.get(i);
                 TopicBean topic = new TopicBean();
+                topic.setId((String)row.get(0));
                 topic.setTitle((String)row.get(1));
                 topic.setContent((String)row.get(2));
                 topic.setAuthor((String)row.get(3));
-                topic.setSubmitTime((String)row.get(4));
+                topic.setSubmitDate((String)row.get(4));
+                topic.setSubmitTime((String)row.get(5));
                 data.add(topic);
             }
         }
@@ -108,16 +112,16 @@ public class TopicListBean {
     }
     
     //增加新主题
-    public int insertData() {
-        OpDB db = new OpDB();
+    public String insertData() {
         List parameterList = new ArrayList();
-        parameterList.add(id);
         parameterList.add(title);
         parameterList.add(content);
-        parameterList.add(author);
-        parameterList.add(submitTime);
-        int c = db.execUpdate("insert into tbl_topic (id,title,content,author,submitTime) values (?,?,?,?,?)", parameterList);
-        return c;
+        parameterList.add(getUser().getName());
+        int c = db.execUpdate("insert into tbl_topic (title,content,author) values (?,?,?)", parameterList);
+        if(c > 0){
+            return "success";
+        }
+        return "failure";
     }
     
     //根据主题号在回复表中取信息
@@ -144,5 +148,13 @@ public class TopicListBean {
             return "notSignIn";
         }
         return "signIned";
+    }
+
+    public String getSubmitDate() {
+        return submitDate;
+    }
+
+    public void setSubmitDate(String submitDate) {
+        this.submitDate = submitDate;
     }
 }
