@@ -13,6 +13,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
+        <form action="DelServlet" method="post">
         <table width="785" height="59" border="1"  align="center" >
             <tr bordercolor="#66FF33" bgcolor="#BCE7FA">
                 <th colspan="3" align="left"><a href="./topicList.xhtml">[返回]</a>主题：<h:outputText value="#{replyBean.topic.title}"/></th>
@@ -37,7 +38,7 @@ and open the template in the editor.
                                 #{replyBean.topic.submitDate} #{replyBean.topic.submitTime}
                             </td>
                         </tr>
-                        <!--回复内容-->
+                        <!--内容-->
                         <tr>
                             <td valign="center">
                                 <br/>
@@ -48,12 +49,8 @@ and open the template in the editor.
                         </tr>
                         <tr>
                           <td valign="bottom" align="right">
-                              <div class="control">
-                                <div id='post-forum-bulletin-1'  class='fl tracking-ad' data-mod='popu_9'></div>
-                                <div class="fr">
-                                    <a href="#quote" class="quote" rel='nofollow'>回复</a>
-                                </div>
-                                </div>
+                                <a href="#quote" class="quote" rel='nofollow'>回复</a>
+                                <a href="./del.xhtml?info=topic_#{replyBean.topicId}_0_#{replyBean.topic.subContent}">删除该主题</a>
                           </td>
                       </tr>
                     </table>
@@ -90,18 +87,15 @@ and open the template in the editor.
                             </td>
                         </tr>
                         <tr>
-                          <td valign="bottom" align="right">
-                              <div class="control">
-                                <div id='post-forum-bulletin-1'  class='fl tracking-ad' data-mod='popu_9'></div>
-                                <div class="fr">
-                                    <a href="#quote" class="quote" rel='nofollow'>回复</a>
-                                </div>
-                                </div>
-                          </td>
+                            <td valign="bottom" align="right">
+                                <a href="#quote" class="quote" rel='nofollow'>回复</a>
+                                <a href="./del.xhtml?info=reply_#{replyBean.topicId}_#{reply.id}_#{reply.content}">删除该回复</a>
+                            </td>
                       </tr>
                     </table>
                 </td></tr>
             </ui:repeat>
         </table>
+        </form>
     </body>
 </html>

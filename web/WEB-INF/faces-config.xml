@@ -63,6 +63,21 @@
             <value>#{db}</value>
         </managed-property>
     </managed-bean>
+    
+    <!--删除界面bean-->
+    <managed-bean>
+        <managed-bean-name>delBean</managed-bean-name>
+        <managed-bean-class>beans.DelBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+        <managed-property>
+            <property-name>user</property-name>
+            <value>#{userBean}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>db</property-name>
+            <value>#{db}</value>
+        </managed-property>
+    </managed-bean>
         
     <!--主页跳转-->
     <navigation-rule>
@@ -137,6 +152,19 @@
         <navigation-case>
             <from-outcome>failure</from-outcome>
             <to-view-id>/topicPublish.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--删除文章跳转-->
+    <navigation-rule>
+        <from-view-id>/del.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/topicList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/topicShow.xhtml?id=#{delBean.topicId}</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>
