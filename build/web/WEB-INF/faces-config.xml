@@ -57,10 +57,14 @@
     <managed-bean>
         <managed-bean-name>replyBean</managed-bean-name>
         <managed-bean-class>beans.ReplyBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
+        <managed-bean-scope>view</managed-bean-scope>
         <managed-property>
             <property-name>db</property-name>
             <value>#{db}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>user</property-name>
+            <value>#{userBean}</value>
         </managed-property>
     </managed-bean>
     
@@ -82,10 +86,6 @@
     <!--主页跳转-->
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>show</from-outcome>
-            <to-view-id>/topicList.xhtml</to-view-id>
-        </navigation-case>
         //登录成功
         <navigation-case>
             <from-outcome>success</from-outcome>
@@ -128,7 +128,10 @@
         
     <!--登录界面的跳转-->
     <navigation-rule>
-        //跳到欢迎界面
+        <navigation-case>
+            <from-outcome>show</from-outcome>
+            <to-view-id>/topicList.xhtml</to-view-id>
+        </navigation-case>
         <from-view-id>/signIn.xhtml</from-view-id>
         //登录成功
         <navigation-case>
@@ -155,16 +158,16 @@
         </navigation-case>
     </navigation-rule>
     
-    <!--删除文章跳转-->
-    <navigation-rule>
-        <from-view-id>/del.xhtml</from-view-id>
+    <!--发表回复跳转-->
+    <navigation-rule>>
+        <from-view-id>/replyPublish.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>success</from-outcome>
-            <to-view-id>/topicList.xhtml</to-view-id>
+            <to-view-id>/topicShow.xhtml?#{replyBean.topicId}</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>failure</from-outcome>
-            <to-view-id>/topicShow.xhtml?id=#{delBean.topicId}</to-view-id>
+            <to-view-id>/topicList.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>

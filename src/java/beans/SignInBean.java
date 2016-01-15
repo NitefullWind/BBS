@@ -83,6 +83,11 @@ public class SignInBean {
         errMessage = "用户名或密码错误";
         return "failure";
     }
+    
+    public String out() {
+        user.quit();
+        return "show";
+    }
 
     /**
      * @return the user

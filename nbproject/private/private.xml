@@ -12,12 +12,12 @@
             <file>file:/E:/J2EE/BBS/web/WEB-INF/faces-config.xml</file>
             <file>file:/E:/J2EE/BBS/src/java/beans/BaseBean.java</file>
             <file>file:/E:/J2EE/BBS/src/java/beans/ReplyBean.java</file>
-            <file>file:/E:/J2EE/BBS/web/del.xhtml</file>
             <file>file:/E:/J2EE/BBS/src/java/beans/DelBean.java</file>
             <file>file:/E:/J2EE/BBS/web/topicShow.xhtml</file>
             <file>file:/E:/J2EE/BBS/web/index.xhtml</file>
             <file>file:/E:/J2EE/BBS/web/topicPublish.xhtml</file>
             <file>file:/E:/J2EE/BBS/web/signIn.xhtml</file>
+            <file>file:/E:/J2EE/BBS/web/replyPublish.xhtml</file>
             <file>file:/E:/J2EE/BBS/src/java/beans/OpDB.java</file>
             <file>file:/E:/J2EE/BBS/src/java/beans/TopicBean.java</file>
         </group>

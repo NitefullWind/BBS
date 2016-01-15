@@ -78,7 +78,9 @@ public class OpDB {
         List list = new ArrayList();
         
         if(con == null) {
-            connectDB();
+            if(!connectDB()){
+                return list;
+            }
         }
 //        if(connectDB()){
             try { 
@@ -111,6 +113,27 @@ public class OpDB {
     public List execSelect(String sql) {
         List nullList = new ArrayList();
         return execSelect(sql, nullList);
+    }
+    
+//    @Override 根据行号，列号获取一个字符串
+    public String execSelect(String sql, int rowIndex, int colIndex) {
+        List list = execSelect(sql);
+        if(list!=null && list.size() >= rowIndex) {
+            list = (List)list.get(rowIndex);
+            if(list!=null && list.size() >= colIndex) {
+                return (String)list.get(colIndex);
+            }
+        }
+        return "";
+    }
+//    @Override 根据行号获取一行记录
+    public List execSelect(String sql, int rowIndex) {
+        List list = execSelect(sql);
+        if(list!=null && list.size() >= rowIndex) {
+            list = (List)list.get(rowIndex);
+            return list;
+        }
+        return null;
     }
     
     //执行带参数的如insert,delete,update操作,返回操作影响的行数

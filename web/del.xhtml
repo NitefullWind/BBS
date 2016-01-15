@@ -13,9 +13,9 @@ and open the template in the editor.
     </head>
     <body>
         <h:form>
-            确定要删除 <p style="color:red">#{delBean.type}</p><p style="color:blue">#{delBean.content}</p> 吗？
-            <h:commandButton action="#{delBean.del()}" value="确定删除"/>
-            <a href="./topicShow.xhtml?id=#{delBean.topicId}">取消并返回</a>
+            删除 <p style="color:red">#{delBean.type}</p><p style="color:blue">#{delBean.content}</p> 时出现错误：
+            <h:outputText value="#{delBean.del()}"/>
+            <a href="./topicShow.xhtml?tid=#{delBean.topicId}">取消并返回</a>
         </h:form>
     </body>
 </html>

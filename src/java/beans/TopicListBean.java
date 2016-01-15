@@ -113,6 +113,9 @@ public class TopicListBean {
     
     //增加新主题
     public String insertData() {
+        if(user.notSignIn()){
+            return "failure";
+        }
         List parameterList = new ArrayList();
         parameterList.add(title);
         parameterList.add(content);

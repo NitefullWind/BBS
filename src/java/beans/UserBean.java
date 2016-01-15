@@ -29,7 +29,21 @@ public class UserBean {
     }
 
     public String getName() {
+        if(name==null || name.trim().equals("")) {
+            return "游客";
+        }
         return name;
+    }
+    
+    public void quit() {
+        id = name = null;
+    }
+    
+    public boolean notSignIn() {
+        if(name==null || name.trim().equals("")){
+            return true;
+        }
+        return false;
     }
 
     public void setName(String name) {

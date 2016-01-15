@@ -5,9 +5,13 @@
  */
 package beans;
 
+import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -15,11 +19,15 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class ReplyBean{
 
-    private String topicId;
-    private TopicBean topic;
-    private List replys;
+    private String topicId = null;
+    private TopicBean topic = null;
+    private List replys = null;
     private OpDB db;
+    private UserBean user;
     private boolean hasGetTpic;
+    private String replyId = null;
+    private String content = null;
+    private Reply reply = null;
     /**
      * Creates a new instance of ReplyBean
      */
@@ -29,7 +37,10 @@ public class ReplyBean{
         hasGetTpic = false;
         
         HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        topicId = request.getParameter("id");
+        topicId = request.getParameter("tid");
+        if(topicId==null || topicId.trim().equals("")) {
+            replyId = request.getParameter("rid");
+        }
     }
 
     public TopicBean getTopic() {        
@@ -62,7 +73,7 @@ public class ReplyBean{
                                     new ArrayList<String>(){{add(topicId);}});
             for (int i = 0; i < list.size(); i++) {
                 List row = (List)list.get(i);
-                Reply reply = new Reply();
+                reply = new Reply();
                 reply.setId((String)row.get(0));
                 reply.setAuthor((String)row.get(1));
                 reply.setReplyUser((String)row.get(2));
@@ -77,6 +88,32 @@ public class ReplyBean{
             }
         }
         return replys;
+    }
+    
+    public String insertData() {
+        if(user.notSignIn()) {
+            return "failure";
+        }
+        List parameterList = new ArrayList();
+        parameterList.add(topicId);
+        parameterList.add(getUser().getName());
+        if(replyId==null){
+            parameterList.add(topic.getAuthor());
+        }else{
+            parameterList.add(reply.getAuthor());
+        }
+        parameterList.add(content);
+        int c = db.execUpdate("insert into tbl_reply (topicId,author,replyUser,content) values (?,?,?,?)", parameterList);
+        if(c > 0){
+            HttpServletResponse response = (HttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+            try {
+                response.sendRedirect("topicShow.xhtml?tid="+getTopicId());
+            } catch (IOException ex) {
+                Logger.getLogger(ReplyBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return "success";
+        }
+        return "failure";
     }
 
     public void setReplys(List replys) {
@@ -97,5 +134,46 @@ public class ReplyBean{
 
     public void setDb(OpDB db) {
         this.db = db;
+    }
+
+    public String getReplyId() {
+        return replyId;
+    }
+
+    public void setReplyId(String replyId) {
+        this.replyId = replyId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public UserBean getUser() {
+        return user;
+    }
+
+    public void setUser(UserBean user) {
+        this.user = user;
+    }
+
+    public Reply getReply() {
+        if(replyId!=null && !replyId.trim().equals("")) {
+            List row = (List)db.execSelect("select topicId, author, content from tbl_reply where id='"+replyId+"'", 0);
+            reply = new Reply();
+            reply.setTopicId((String)row.get(0));
+            reply.setAuthor((String)row.get(1));
+            reply.setContent((String)row.get(2));
+            
+            setTopicId(reply.getTopicId());
+        }
+        return reply;
+    }
+
+    public void setReply(Reply reply) {
+        this.reply = reply;
     }
 }

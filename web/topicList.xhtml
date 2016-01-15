@@ -21,10 +21,10 @@
             <ui:repeat value="#{topicListBean.data}" var="t" varStatus="i">
                 <tr bordercolor="#66FF33" bgcolor="#BCE7FA">
                     <td width="252" height="17">
-                        <a href="/BBS/faces/topicShow.xhtml?id=#{t.id}">#{t.title} </a>
+                        <a href="/BBS/faces/topicShow.xhtml?tid=#{t.id}">#{t.title} </a>
                     </td>
                     <td  width="398"  align="center" bordercolor="#66FF33" bgcolor="#BCE7FA" >
-                        <a href="/BBS/faces/topicShow.xhtml?id=#{t.id}">#{t.subContent} </a>
+                        <a href="/BBS/faces/topicShow.xhtml?tid=#{t.id}">#{t.subContent} </a>
                     </td>
                     <td align="center">
                         <h:outputText value="#{t.submitDate} #{t.submitTime}"/>

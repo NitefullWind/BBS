@@ -17,13 +17,15 @@ and open the template in the editor.
             <h:form>
                 <tr>
                     <td><h:outputText value="标题："/></td>
-                    <td><h:inputText id="inputTitle" value="#{topicListBean.title}">
+                    <td><h:inputText id="inputTitle" value="#{topicListBean.title}"
+                                     required="true" requiredMessage="主题不能为空">
                         </h:inputText>
                     </td>
                 </tr>
                 <tr>
                     <td><h:outputText value="内容："/></td>
-                    <td><h:inputTextarea value="#{topicListBean.content}"/></td>
+                    <td><h:inputTextarea value="#{topicListBean.content}" 
+                                     required="true" requiredMessage="内容不能为空"/></td>
                 </tr>
                 <tr>
                     <td><input type="reset" value="请 空"/></td>

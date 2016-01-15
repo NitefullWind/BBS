@@ -28,9 +28,6 @@ and open the template in the editor.
                 <tr>
                     <td align="right"><h:outputText value="密    码："/></td>
                     <td><h:inputSecret id="inputSecret" value="#{signInBean.password}" required="true" requiredMessage="密码不能为空"/>
-                        <h:outputLink value="resPwd.jsp" rendered="true" tabindex="100">
-                            <h:outputText value="忘记密码了？"/>
-                        </h:outputLink>
                     </td>
                 </tr>
                 <tr>
@@ -41,11 +38,14 @@ and open the template in the editor.
                     <td><input type="reset" value="请 空"/></td>
                     <td><h:commandButton value="登 录" action="#{signInBean.verify()}"/></td>
                 </tr>
-                
+
                 <tr>
                     <td colspan="2"><h:outputText value="#{signInBean.errMessage}" style="color:red;vertical-align:middle;"/></td>
                 </tr>
             </h:form>
         </table>
+        <h:form>
+            <h:commandLink value="以游客身份查看" action="#{signInBean.out()}"/>
+        </h:form>
     </h:body>
 </html>

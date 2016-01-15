@@ -6,30 +6,25 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html">
     <head>
-        <title>发表文章</title>
+        <title>回复</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
         <table>
             <h:form>
                 <tr>
-                    <td><h:outputText value="标题："/></td>
-                    <td><h:inputText id="inputTitle" value="#{topicListBean.title}"
-                                     required="true" requiredMessage="主题不能为空">
-                        </h:inputText>
-                    </td>
+                    <h:outputText value="回复：#{replyBean.topic.title} #{replyBean.reply.author}" />
                 </tr>
                 <tr>
                     <td><h:outputText value="内容："/></td>
-                    <td><h:inputTextarea value="#{topicListBean.content}" 
+                    <td><h:inputTextarea value="#{replyBean.content}" 
                                      required="true" requiredMessage="内容不能为空"/></td>
                 </tr>
                 <tr>
                     <td><input type="reset" value="请 空"/></td>
-                    <td><h:commandButton value="发 表" action="#{topicListBean.insertData()}"/></td>
+                    <td><h:commandButton value="发 表" action="#{replyBean.insertData()}"/></td>
                 </tr>
             </h:form>
         </table>
